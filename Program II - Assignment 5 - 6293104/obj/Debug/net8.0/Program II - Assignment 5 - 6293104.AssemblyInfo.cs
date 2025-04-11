@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Program II - Assignment 5 - 6293104")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94d1919b39885903865a75f81a9ed2a2ecdfd8a5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8738ba6c0dfbf9693b9a06f232988c6a6d6b8a41")]
 [assembly: System.Reflection.AssemblyProductAttribute("Program II - Assignment 5 - 6293104")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Program II - Assignment 5 - 6293104")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
