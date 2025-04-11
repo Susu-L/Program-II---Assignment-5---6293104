@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Suheng\\OneDrive - John Abbott College\\Desktop\\Program II - Assignment 5 - 6293104\\Program II - Assignment 5 - 6293104.csproj",
+      "projectUniqueName": "C:\\Users\\Suheng\\source\\repos\\Susu-L\\Program-II---Assignment-5---6293104\\Program II - Assignment 5 - 6293104\\Program II - Assignment 5 - 6293104.csproj",
       "projectName": "Program II - Assignment 5 - 6293104",
-      "projectPath": "C:\\Users\\Suheng\\OneDrive - John Abbott College\\Desktop\\Program II - Assignment 5 - 6293104\\Program II - Assignment 5 - 6293104.csproj",
+      "projectPath": "C:\\Users\\Suheng\\source\\repos\\Susu-L\\Program-II---Assignment-5---6293104\\Program II - Assignment 5 - 6293104\\Program II - Assignment 5 - 6293104.csproj",
       "packagesPath": "C:\\Users\\Suheng\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Suheng\\OneDrive - John Abbott College\\Desktop\\Program II - Assignment 5 - 6293104\\obj\\",
+      "outputPath": "C:\\Users\\Suheng\\source\\repos\\Susu-L\\Program-II---Assignment-5---6293104\\Program II - Assignment 5 - 6293104\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
