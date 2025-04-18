@@ -493,7 +493,7 @@ namespace Program_II___Assignment_5___6293104
             GameState gameState = null;
             bool exit = false;
 
-            while(!exit)
+            while (!exit)
             {
                 Console.WriteLine("\nMain Menu:");
                 Console.WriteLine("1. Setup Game");
@@ -502,8 +502,73 @@ namespace Program_II___Assignment_5___6293104
                 Console.WriteLine("4. Quit");
                 Console.Write("Enter your choice: ");
 
+                string choice = Console.ReadLine();
 
+                switch (choice)
+                {
+                    case "1": // Setup Game
+                        Console.Write("Include jokers? (y/n): ");
+                        bool hasJokers = Console.ReadLine().ToLower() == "y";
+
+                        Console.WriteLine("Enter suit priority order (comma separated):");
+                        Console.WriteLine("Options: hearts, diamonds, clubs, spades");
+                        string[] suits = Console.ReadLine().Split(',');
+                        for (int i = 0; i < suits.Length; i++)
+                        {
+                            suits[i] = suits[i].Trim().ToLower();
+                        }
+
+                        gameState = new GameState(hasJokers, suits);
+                        Console.WriteLine("Game setup complete. Deck shuffled.");
+                        break;
+
+                    case "2":
+                        if (gameState == null)
+                        {
+                            Console.WriteLine("Please setup the game first!");
+                            break;
+                        }
+
+                        Console.Write("Number of players: ");
+                        int numPlayers = int.Parse(Console.ReadLine());
+
+                        Console.Write("Cards per player: ");
+                        int cardsPerPlayer = int.Parse(Console.ReadLine());
+
+                        try
+                        {
+                            gameState.SetupGame(numPlayers, cardsPerPlayer);
+                            Console.WriteLine($"Dealt {cardsPerPlayer} cards to each of {numPlayers} players.");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error dealing cards: {ex.Message}");
+                        }
+                        break;
+
+                    case "3":
+                        if (gameState == null)
+                        {
+                            Console.WriteLine("Please setup the game first!");
+                            break;
+                        }
+
+                        Console.WriteLine("\nCurrent Game State:");
+                        Console.WriteLine(gameState.ToString());
+                        break;
+
+                    case "4": // Quit
+                        exit = true;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+
+                }
             }
+            Console.WriteLine("\n Thank you for playing! Press Enter to exit...")
+            Console.ReadLine();
         }
     }
 
