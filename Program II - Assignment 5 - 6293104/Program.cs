@@ -176,7 +176,43 @@ namespace Program_II___Assignment_5___6293104
                 }
                 else
                 {
-                    string[]
+                    string[] suits = { "hearts", "diamonds", "clubs", "spades" };
+                    string[] ranks = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10". "Jack", "Queen", "King" };
+
+                    int suit_Index = (id - 1) / 13;
+                    int rank_Index = (id - 1) % 13;
+
+                    this.rank = suits[suit_Index];
+                    this.rank = ranks[rank_Index];
+
+                    if (this.suit == "hearts" || this.suit == "diamonds")
+                    {
+                        this.color = "Red"; 
+                    }
+                    else
+                    {
+                        this.color = "Black";
+                    }
+                }
+            }
+
+            public override string ToString()
+            {
+                if (rank == "Joker")
+                {
+                    return color == "Red" ? "RJ" : "BJ";
+                }
+                else
+                {
+                    string symbole = "";
+                    switch (suit)
+                    {
+                        case "hearts": symbole = "\u2665"; break;
+                        case "diamonds": symbole = "\u2666"; break;
+                        case "clubs": symbole = "\u2663"; break;
+                        case "spades": symbole = "\u2660"; break;
+                    }
+                    return $"{rank}{symbole}";
                 }
             }
 
