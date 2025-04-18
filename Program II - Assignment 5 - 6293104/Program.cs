@@ -124,7 +124,63 @@ namespace Program_II___Assignment_5___6293104
         //    FOR each card in cards
         //        PRINT card.ToString()
 
+        public class Card
+        {
+            private string rank;
+            private string suit;
+            private string color;
 
+            public string Rank => rank;
+            public string Suit => suit;
+            public string Color => color;
+
+            public Card (string rank, string suit)
+            {
+                this.Rank = rank;
+                this.Suit = suit.ToLower();
+
+                if (this.suit == "hearts" || this.suit == "diamonds")
+                {
+                    this.color = "Red";
+                }
+                else if (this.suit == "clubs" || this.suit == "spades")
+                {
+                    this.color = "Black";
+                }
+                else
+                {
+                    this.color = "None";
+                }
+            }
+
+            public Card (string color)
+            {
+                this.rank = "Joker";
+                this.suit = null;
+                this.color = color;
+            }
+
+            public Card (int id)
+            {
+                if (id == 53)
+                {
+                    this.rank = "Joker";
+                    this.suit = null;
+                    this.color = "Red";
+                }
+                else if (id == 54)
+                {
+                    this.rank = "Joker";
+                    this.suit = null;
+                    this.color = "Black";
+                }
+                else
+                {
+                    string[]
+                }
+            }
+
+        }
 
 
 
@@ -132,32 +188,34 @@ namespace Program_II___Assignment_5___6293104
 
         static void Main(string[] args)
         {
-            // public class Card
-            // private _rank, _suit, _color
 
-            // public Card(rank, suit
-            //      {
-            //   _rank = rank , _suit = suit
-            //   _color = (suit == "Heart" || "Diamond") ? "Red" : "Black"
-            //        }
+        }
 
-            //        public Card(int number
-            //         {
-            //             if (number == 53
-            //             {
-            //   _rank = "Joker"
-            //    _color = "Red"
-            //             }
-            //           else if (number == 54
-            //             {
-            //   _rank = "Joker"
-            //    _color = "Black"
-            //             }
-            //         }
-            //   }
+        // private _rank, _suit, _color
+
+        // public Card(rank, suit
+        //      {
+        //   _rank = rank , _suit = suit
+        //   _color = (suit == "Heart" || "Diamond") ? "Red" : "Black"
+        //        }
+
+        //        public Card(int number
+        //         {
+        //             if (number == 53
+        //             {
+        //   _rank = "Joker"
+        //    _color = "Red"
+        //             }
+        //           else if (number == 54
+        //             {
+        //   _rank = "Joker"
+        //    _color = "Black"
+        //             }
+        //         }
+        //   }
 
 
-            Console.ReadLine();
+        Console.ReadLine();
         }
     }
 }
