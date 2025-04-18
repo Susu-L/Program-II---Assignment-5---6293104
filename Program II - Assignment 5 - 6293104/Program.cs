@@ -135,7 +135,7 @@ namespace Program_II___Assignment_5___6293104
             public string Suit => suit;
             public string Color => color;
 
-            public Card (string rank, string suit)
+            public Card(string rank, string suit)
             {
                 this.Rank = rank;
                 this.Suit = suit.ToLower();
@@ -154,14 +154,14 @@ namespace Program_II___Assignment_5___6293104
                 }
             }
 
-            public Card (string color)
+            public Card(string color)
             {
                 this.rank = "Joker";
                 this.suit = null;
                 this.color = color;
             }
 
-            public Card (int id)
+            public Card(int id)
             {
                 if (id == 53)
                 {
@@ -188,7 +188,7 @@ namespace Program_II___Assignment_5___6293104
 
                     if (this.suit == "hearts" || this.suit == "diamonds")
                     {
-                        this.color = "Red"; 
+                        this.color = "Red";
                     }
                     else
                     {
@@ -217,7 +217,7 @@ namespace Program_II___Assignment_5___6293104
                 }
             }
 
-            public override bool Equals (object obj)
+            public override bool Equals(object obj)
             {
                 if (obj == null || GetType() != obj.GetType())
                 {
@@ -253,8 +253,83 @@ namespace Program_II___Assignment_5___6293104
             public Deck(bool Have_Jokers)
             {
                 cards = new List<Card>();
+                string[] suits = { "hearts", "diamonds", "clubs", "spades" };
+                string[] ranks = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
 
+                foreach (string suit in suits)
+                {
+                    foreach (string rank in ranks)
+                    {
+                        cards.Add(new Card(rank, suit));
+                    }
+                }
+
+                if (Have_Jokers)
+                {
+                    cards.Add(new Card("Red"));
+                    cards.Add(new Card("Black"));
+                }
             }
+
+            public Deck(string customRules)
+            {
+                cards = new List<Card>();
+
+                cards.Add(new Card("Ace", "hearts"));
+                cards.Add(new Card("King", "hearts"));
+                cards.Add(new Card("Queen", "hearts"));
+                cards.Add(new Card("Joker", "Red"));
+            }
+
+            public Card Draw()
+            {
+                if (cards.Count == 0)
+                {
+                    throw new InvalidOperationException("Cannot draw from an empty deck");
+
+                    Card Top_Card = cards[0];
+                    cards.RemoveAt(0);
+                    return Top_Card;
+                }
+            }
+
+            public void Shuffle()
+            {
+                Random RNG = new Random();
+                int n = cards.Count;
+                while (n > 1)
+                {
+                    n--;
+                    int k = RNG.Next(n + 1);
+                    Card value = cards[k];
+                    cards[k] = cards[n]
+                    cards[n] = value;
+                }
+            }
+
+            public Card Peek()
+            {
+                if (cards.Count == 0)
+                {
+                    return null;
+                }
+                return cards[0];
+            }
+
+            public void Plac_On_Top(Card card)
+            {
+                cards.Insert(0, card);
+            }
+
+            public override string ToString()
+            {
+                return $"Deck: {CardsLeft} cards remaining";
+            }
+        }
+
+        public class Hand
+        {
+
         }
 
 
@@ -292,5 +367,5 @@ namespace Program_II___Assignment_5___6293104
 
         Console.ReadLine();
         }
-    }
+}
 }
