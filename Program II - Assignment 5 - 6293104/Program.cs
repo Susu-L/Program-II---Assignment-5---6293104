@@ -329,6 +329,85 @@ namespace Program_II___Assignment_5___6293104
 
         public class Hand
         {
+            private List<Card> cards;
+            private string[] suitPriority;
+
+            public int Size => cards.Count;
+
+            public Hand(string[] suitPriority)
+            {
+                cards = new List<Card>();
+                this.suitPriority = suitPriority
+            }
+
+            public void AddCard(Card card)
+            {
+                cards.Add(card);
+                OrderBySuit();
+            }
+
+            public Card RemoveCard()
+            {
+                if (cards.Count == 0)
+                {
+                    throw new InvalidOperationException("Cannot remove from an empty hand");
+                    Card card = cards[0];
+                    cards.RemoveAt(0);
+                    return card;
+                }
+            }
+
+            public Card Contains(Card target)
+            {
+                foreach (Card card in cards)
+                {
+                    if (card.Equals(target))
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
+            private void OrderBySuit()
+            {
+                List<Card> Ordered_Cards = new List<Card>();
+                List<Card> Jokers = new List<Card>();
+
+                foreach (Card card in cards)
+                {
+                    if (card.Rank == "Joker")
+                    {
+                        Jokers.Add(card);
+                    }
+                }
+
+                foreach (string suit in suitPriority)
+                {
+                    foreach (Card card in cards)
+                    {
+                        if (card.Suit == suit && card.Rank != "Joker")
+                        {
+                            Ordered_Cards.Add(card);
+                        }
+                    }
+                }
+
+
+                Ordered_Cards.AddRange(Jokers);
+                cards = Ordered_Cards;
+            }
+
+            public override string ToString()
+            {
+                StringBuilder SB = new StringBuilder();
+                foreach (Card card in cards)
+                {
+                    SB.Append(card.ToString());
+                    SB.Append(" ");
+                }
+                return SB.ToString().Trim();
+            }
 
         }
 
@@ -336,12 +415,17 @@ namespace Program_II___Assignment_5___6293104
 
 
 
-        static void Main(string[] args)
+
+
+
+
+
+            static void Main(string[] args)
         {
 
         }
 
-        // private _rank, _suit, _color
+            // private _rank, _suit, _color
 
         // public Card(rank, suit
         //      {
@@ -365,7 +449,7 @@ namespace Program_II___Assignment_5___6293104
         //   }
 
 
-        Console.ReadLine();
+            Console.ReadLine();
         }
-}
+    }
 }
