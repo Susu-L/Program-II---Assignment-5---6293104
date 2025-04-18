@@ -8,6 +8,7 @@ using System.Runtime.Intrinsics.X86;
 using System.Security.Claims;
 using System.Runtime.InteropServices;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Program_II___Assignment_5___6293104
 {
@@ -216,6 +217,44 @@ namespace Program_II___Assignment_5___6293104
                 }
             }
 
+            public override bool Equals (object obj)
+            {
+                if (obj == null || GetType() != obj.GetType())
+                {
+                    return false;
+                }
+
+                Card other = (Card)
+                return rank == other.rank && suit == other.suit && color == other.color;
+            }
+
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    int hash = 17;
+                    hash = hash * 23 + (rank != null ? rank.GetHashCode() : 0)
+                    hash = hash * 23 + (rank != null ? rank.GetHashCode() : 0)
+                    hash = hash * 23 + (color != null ? rank.GetHashCode() : 0)
+                }
+            }
+        }
+
+        public class Deck
+        {
+            private List<Card> cards;
+            public int CardsLeft => cards.Count;
+
+            public Deck()
+            {
+                cards = new List<Card>();
+            }
+
+            public Deck(bool Have_Jokers)
+            {
+                cards = new List<Card>();
+
+            }
         }
 
 
