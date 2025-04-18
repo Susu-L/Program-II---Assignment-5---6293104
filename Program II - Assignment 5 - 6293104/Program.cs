@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Runtime.InteropServices;
 using System;
 using System.Reflection.Metadata.Ecma335;
+using System.Text;
 
 namespace Program_II___Assignment_5___6293104
 {
@@ -408,8 +409,52 @@ namespace Program_II___Assignment_5___6293104
                 }
                 return SB.ToString().Trim();
             }
-
         }
+
+        public class GameState
+        {
+            private Deck drawDeck;
+            private Deck discardPile;
+            private List<Hand> playerHands;
+            private string[] suitPriority;
+
+            public GameState(bool Have_Jokers, string[] suitPriority)
+            {
+                this.suitPriority = suitPriority;
+                drawDeck = new Deck(Have_Jokers);
+                discardPile = new Deck();
+                playerHands = new List<Hand>();
+                drawDeck.Shuffle();
+            }
+
+            public void SetUpGame(int numPlayers, int cardsPerPlayer)
+            {
+                playerHands.Clear();
+                for (int i = 0; i < numPlayers; i++)
+                {
+                    playerHands.Add(new Hand(suitPriority));
+                }
+                DealCards(cardsPerPlayer);
+            }
+
+            public void DealCards(int cardsPerPlayer)
+            {
+                foreach (Hand hand in playerHands)
+                {
+                    for (int i = 0; i < cardsPerPlayer; i++)
+                    {
+                        if (drawDeck.CardsLeft == 0)
+                        {
+                            ReshuffleDiscard();
+                            if (drawDeck.CardsLeft == 0)
+                            {
+                                throw new InvalidOperationException("Not enough cards to deal");
+                            }
+                            hand.AddCard(drawDeck.Draw());
+                        }
+                    }
+                }
+            }
 
 
 
